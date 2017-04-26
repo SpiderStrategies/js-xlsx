@@ -290,7 +290,14 @@ function write_ws_xml_data(ws, opts, idx, wb) {
 			if(ws[ref] === undefined) continue;
 			if((cell = write_ws_xml_cell(ws[ref], ref, ws, opts, idx, wb)) != null) r.push(cell);
 		}
-		if(r.length > 0) o[o.length] = (writextag('row', r.join(""), {r:rr}));
+		if (r.length > 0) {
+			var attributes = {r: rr}
+			if (ws['!rows'] && ws['!rows'][R] && ws['!rows'][R].height) {
+				attributes.ht = ws['!rows'][R].height
+				attributes.customHeight = '1'
+			}
+			o[o.length] = (writextag('row', r.join(''), attributes))
+		}
 	}
 	return o.join("");
 }
