@@ -802,13 +802,15 @@ if (typeof module !== 'undefined' && module.exports) module.exports = cptable;
 /*jshint newcap: false */
 (function(root, factory){
   "use strict";
-  if(typeof cptable === "undefined") {
-    if(typeof require !== "undefined"){
-      var cpt = require('./cpt' + 'able');
-      if (typeof module !== 'undefined' && module.exports) module.exports = factory(cpt);
-      else root.cptable = factory(cpt);
-    } else throw new Error("cptable not found");
-  } else cptable = factory(cptable);
+  // Commented out for Browserify https://github.com/remimarenco/JsCoverageQC/commit/48fd6f5714efe2d8899ebf743847b37e6ec24bd1
+  // if(typeof cptable === "undefined") {
+  //   if(typeof require !== "undefined"){
+  //     var cpt = require('./cpt' + 'able');
+  //     if (typeof module !== 'undefined' && module.exports) module.exports = factory(cpt);
+  //     else root.cptable = factory(cpt);
+  //   } else throw new Error("cptable not found");
+  // } else
+  	cptable = factory(cptable);
 }(this, function(cpt){
   "use strict";
   var magic = {
